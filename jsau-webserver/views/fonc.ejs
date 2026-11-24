@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>jsau-webserver</title>
+    <link rel='stylesheet' href='/css' />
+  </head>
+  <body>
+    <img src="/assets" style="width: 300px; height: auto";>
+    
+    <p><%= title %></p>
+    
+    <form action="/search" method="GET">
+      <label for="text">Nom du fichier HTML à chercher :</label>
+      <input type="text" id="text" name="text" required>
+      <button type="submit">Rechercher</button>
+    </form>
+    <form action="/add" method="POST">
+        <label for="html">Nom du fichier HTML :</label>
+        <input type="text" id="html" name="html" required>
+        <button type="submit">Ajouter le bookmark</button>
+    </form>
+    <form action="/remove" method="POST">
+      <input type="hidden" name="_method" value="DELETE">
+      <label for="html">Nom du fichier HTML à supprimer :</label>
+      <input type="text" id="html" name="html" required>
+      <button type="submit">Supprimer</button>
+    </form>
+    <form action="/documents/" method="GET">
+      <label for="html">Nom du fichier HTML à télécharger :</label>
+      <input type="text" id="html" name="html" required>
+      <button type="submit">Télécharger</button>
+    </form>
+  </body>
+</html>

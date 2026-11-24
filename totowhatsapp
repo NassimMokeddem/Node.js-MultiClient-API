@@ -1,0 +1,17 @@
+app.get('/search', (req, res) => {
+    const searchText = req.query.text;
+
+    if (!searchText) {
+        return res.status(400).send("Le paramètre 'text' est requis.");
+    }
+
+    fs.readdir(htmlPath)
+        .then(files => {
+            const matchingFiles = files.filter(file => file.includes(searchText));
+            res.json(matchingFiles);
+        })
+        .catch(error => {
+            console.error("Erreur lors de la recherche :", error);
+            res.status(500).send("Erreur lors de la recherche des documents.");
+        });
+});
